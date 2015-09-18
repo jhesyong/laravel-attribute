@@ -69,7 +69,7 @@ The rest arguments are passed the attribute method.
     Attr::label('mammal_animal', 'cat');
 
 ### Hash Array
-    // Useful for generate select, radio button, etc.
+    // Useful for building select, radio, checkbox, etc.
     // return ['cat' => 'Cat', 'dog' => 'Dog', 'elephant' => 'Elephant']
     Attr::hashArray('mammal_animal');
 
