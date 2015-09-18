@@ -1,8 +1,17 @@
 # laravel-attribute
 To create attribute options.
 
+##Installation
 
-## Service Provider
+### Composer
+Add the following to `composer.json`, and do `composer update`.
+
+    "require": {
+        ...
+        "jhesyong/laravel-attribute": "~1.0"
+    }
+
+### Service Provider
 Add the following to the app config
 
     'providers' => [
@@ -11,7 +20,7 @@ Add the following to the app config
         ...
     ],
 
-## Facade
+### Facade
 Add the following to the app config
 
     'aliases' => [
