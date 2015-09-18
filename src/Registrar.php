@@ -2,8 +2,8 @@
 
 namespace Jhesyong\Attribute;
 
-class Registrar {
-
+class Registrar
+{
 	/**
 	 * Attribute mapping
 	 * @var array
@@ -28,5 +28,4 @@ class Registrar {
 
 		return null;
 	}
-
 }

@@ -2,8 +2,8 @@
 
 namespace Jhesyong\Attribute;
 
-class Delegate {
-
+class Delegate
+{
 	protected $registrar;
 
 	public function __construct(Registrar $registrar)
@@ -31,5 +31,4 @@ class Delegate {
 
 		throw new \InvalidArgumentException("Unknown attribute {$className}");
 	}
-
 }
