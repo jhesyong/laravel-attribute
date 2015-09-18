@@ -1,0 +1,15 @@
+{
+    "name": "jhesyong/laravel-attribute",
+    "description": "To create attribute options",
+    "require": {
+        "php": ">=5.5",
+        "laravel/laravel": "~5.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jhesyong Jiang",
+            "email": "jhesyong@gmail.com"
+        }
+    ]
+}
