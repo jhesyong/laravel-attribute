@@ -77,12 +77,19 @@ The rest arguments are passed the attribute method.
     // return ['' => 'Please Select', cat' => 'Cat', 'dog' => 'Dog', 'elephant' => 'Elephant']
     Attr::hashArray('mammal_animal', true);
 
+    // To custom the empty message, pass it as the third argument.
+    // return ['' => '---Please Select---', cat' => 'Cat', 'dog' => 'Dog', 'elephant' => 'Elephant']
+    Attr::hashArray('mammal_animal', true, '---Please Select---');
+
 ### Pair Array
     // return [['label' => 'Cat', 'value' => 'cat'], ...];
     Attr::pairArray('mammal_animal');
 
     // To add an empty option, pass true as the second argument.
     Attr::pairArray('mammal_animal', true);
+
+    // To custom the empty message, pass it as the third argument.
+    Attr::pairArray('mammal_animal', true, '---Please Select---');
 
 ### Keys
     // return ['cat', 'dog', 'elephant'];

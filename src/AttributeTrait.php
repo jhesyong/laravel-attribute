@@ -39,23 +39,27 @@ trait AttributeTrait
 		return $data[$key];
 	}
 
-	public function hashArray($withEmpty = false)
+	public function hashArray($withEmpty = false, $emptyMessage = null)
 	{
 		$data = $this->getData();
 
+		$emptyMessage = $emptyMessage === null ? 'Please Select' : $emptyMessage;
+
 		if ($withEmpty) {
-			$data = ['' => 'Please Select'] + $data;
+			$data = ['' => $emptyMessage] + $data;
 		}
 
 		return $data;
 	}
 
-	public function pairArray($withEmpty = false)
+	public function pairArray($withEmpty = false, $emptyMessage = null)
 	{
 		$data = $this->getData();
 
+		$emptyMessage = $emptyMessage === null ? 'Please Select' : $emptyMessage;
+
 		if ($withEmpty) {
-			$data = ['' => 'Please Select'] + $data;
+			$data = ['' => $emptyMessage] + $data;
 		}
 
 		return array_map(

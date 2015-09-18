@@ -36,6 +36,10 @@ namespace {
             $this->assertContains('Cat', $registrar->getAttribute('mammal_animal')->hashArray());
             $this->assertContains(['value' => 'elephant', 'label' => 'Elephant'], $registrar->getAttribute('mammal_animal')->pairArray());
             $this->assertContains('cat', $registrar->getAttribute('mammal_animal')->keys());
+            $this->assertContains('Please Select', $registrar->getAttribute('mammal_animal')->hashArray(true));
+            $this->assertContains('---Please Select---', $registrar->getAttribute('mammal_animal')->hashArray(true, '---Please Select---'));
+            $this->assertContains(['value' => '', 'label' => 'Please Select'], $registrar->getAttribute('mammal_animal')->pairArray(true));
+            $this->assertContains(['value' => '', 'label' => '---Please Select---'], $registrar->getAttribute('mammal_animal')->pairArray(true, '---Please Select---'));
         }
 
         public function testDelegate()
@@ -50,6 +54,11 @@ namespace {
             $this->assertArrayHasKey('cat', $delegate->hashArray('mammal_animal'));
             $this->assertContains('Cat', $delegate->hashArray('mammal_animal'));
             $this->assertContains(['value' => 'elephant', 'label' => 'Elephant'], $delegate->pairArray('mammal_animal'));
+            $this->assertContains('cat', $delegate->keys('mammal_animal'));
+            $this->assertContains('Please Select', $delegate->hashArray('mammal_animal', true));
+            $this->assertContains('---Please Select---', $delegate->hashArray('mammal_animal', true, '---Please Select---'));
+            $this->assertContains(['value' => '', 'label' => 'Please Select'], $delegate->pairArray('mammal_animal', true));
+            $this->assertContains(['value' => '', 'label' => '---Please Select---'], $delegate->pairArray('mammal_animal', true, '---Please Select---'));
         }
 
         public function testValidator()
