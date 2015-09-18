@@ -2,8 +2,8 @@
     "name": "jhesyong/laravel-attribute",
     "description": "To create attribute options",
     "require": {
-        "php": ">=5.5",
-        "laravel/laravel": "~5.0"
+        "php": ">=5.5.9",
+        "illuminate/support": "~5.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0"
