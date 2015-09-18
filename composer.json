@@ -11,5 +11,10 @@
             "name": "Jhesyong Jiang",
             "email": "jhesyong@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "Jhesyong\\Attribute\\": "src/"
+        }
+    }
 }
