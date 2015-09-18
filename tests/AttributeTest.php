@@ -17,7 +17,6 @@ namespace Zoo {
 
 namespace {
 
-    use PHPUnit_Framework_TestCase;
     use Jhesyong\Attribute\Registrar;
     use Jhesyong\Attribute\Delegate;
     use Jhesyong\Attribute\Validator;
