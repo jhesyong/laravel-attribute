@@ -4,7 +4,8 @@ namespace Zoo {
 
     use Jhesyong\Attribute\AttributeTrait;
 
-    class MammalAnimal {
+    class MammalAnimal
+    {
         use AttributeTrait;
 
         protected function getOptions()
@@ -21,8 +22,8 @@ namespace {
     use Jhesyong\Attribute\Delegate;
     use Jhesyong\Attribute\Validator;
 
-    class AttributeTest extends PHPUnit_Framework_TestCase {
-
+    class AttributeTest extends PHPUnit_Framework_TestCase
+    {
         public function testAttribute()
         {
             $registrar = new Registrar;
