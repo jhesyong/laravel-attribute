@@ -10,7 +10,7 @@ trait AttributeTrait
 	 * Return a value => label array
 	 * @return array
 	 */
-	protected abstract function getOptions();
+	abstract protected function getOptions();
 
 	protected function getData()
 	{
