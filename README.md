@@ -1,5 +1,6 @@
 # laravel-attribute
-To create attribute options.
+Create attribute options for building select, radio, checkbox.
+Validate form with your attributes.
 
 ##Installation
 
@@ -62,7 +63,7 @@ Or register via the facade.
 
 ## Usage
 You can use all public methods in the `AttributeTrait`.
-Also, You can also define your own methods and then they can be called via the facade.
+Also, you can also define your own methods and then they can be called via the facade.
 The facade forwards the method call to the attribute specified in the first argument.
 The rest arguments are passed the attribute method.
 
