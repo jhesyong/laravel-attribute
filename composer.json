@@ -1,6 +1,6 @@
 {
     "name": "jhesyong/laravel-attribute",
-    "description": "To create attribute options",
+    "description": "Create attribute options for building select, radio, checkbox. Validate form with your attributes.",
     "require": {
         "php": ">=5.5.9",
         "illuminate/support": "~5.0"
