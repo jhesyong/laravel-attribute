@@ -6,9 +6,18 @@ class Delegate
 {
 	protected $registrar;
 
+	protected $attributeContext = null;
+
 	public function __construct(Registrar $registrar)
 	{
 		$this->registrar = $registrar;
+	}
+
+	public function context($context)
+	{
+		$this->attributeContext = $context;
+
+		return $this;
 	}
 
 	public function __call($name, $arguments)
@@ -25,6 +34,11 @@ class Delegate
 		if ($this->registrar->hasAttribute($className))
 		{
 			$attribute = $this->registrar->getAttribute($className);
+
+			if ($this->attributeContext !== null) {
+				$attribute->setContext($this->attributeContext);
+				$this->attributeContext = null;
+			}
 
 			return call_user_func_array([$attribute, $name], array_slice($arguments, 1));
 		}

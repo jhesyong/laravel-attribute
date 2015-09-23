@@ -16,6 +16,31 @@ namespace Zoo {
 
 }
 
+namespace Home {
+
+    use Jhesyong\Attribute\AttributeTrait;
+
+    class Food
+    {
+        use AttributeTrait;
+
+        protected function getOptions($context = null)
+        {
+            $category = [
+                'sour' => ['lemon' => 'Lemon', 'grape' => 'Grape', 'kiwi' => 'Kiwi'],
+                'sweet' => ['banana' => 'Banana', 'apple' => 'Apple'],
+            ];
+
+            if (array_key_exists($context, $category)) {
+                return $category[$context];
+            }
+
+            return array_reduce($category, 'array_merge', []);
+        }
+    }
+
+}
+
 namespace {
 
     use Jhesyong\Attribute\Registrar;
@@ -71,6 +96,30 @@ namespace {
             $this->assertTrue($validator->validate('any_name', 'dog', ['mammal_animal']));
             $this->assertTrue($validator->validate('any_name', 'elephant', ['mammal_animal']));
             $this->assertFalse($validator->validate('any_name', 'snake', ['mammal_animal']));
+        }
+
+        public function testContext()
+        {
+            $registrar = new Registrar;
+            $delegate = new Delegate($registrar);
+            $delegate->register(new Home\Food);
+            $validator = new Validator($registrar);
+
+            $this->assertCount(5, $delegate->hashArray('food'));
+            $this->assertCount(3, $delegate->context('sour')->hashArray('food'));
+            $this->assertCount(2, $delegate->context('sweet')->hashArray('food'));
+            $this->assertCount(5, $delegate->hashArray('food'));
+
+            $this->assertEquals('Banana', $delegate->context('sweet')->label('food', 'banana'));
+            $this->assertEquals('Banana', $delegate->label('food', 'banana'));
+
+            $this->assertTrue($validator->validate('any_name', 'grape', ['food']));
+            $this->assertTrue($validator->validate('any_name', 'grape', ['food', 'sour']));
+            $this->assertFalse($validator->validate('any_name', 'grape', ['food', 'sweet']));
+            $this->assertTrue($validator->validate('any_name', 'grape', ['food']));
+            $this->assertFalse($validator->validate('any_name', 'orange', ['food']));
+            $this->assertFalse($validator->validate('any_name', 'orange', ['food', 'sour']));
+            $this->assertFalse($validator->validate('any_name', 'orange', ['food', 'sweet']));
         }
 
     }

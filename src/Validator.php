@@ -13,8 +13,12 @@ class Validator
 
 	public function validate($attribute, $value, $parameters)
 	{
-		$className = $parameters[0];
+		$attribute = $this->registrar->getAttribute($parameters[0]);
 
-		return $this->registrar->getAttribute($className)->hasKey($value);
+		if (array_key_exists(1, $parameters)) {
+			$attribute->setContext($parameters[1]);
+		}
+
+		return $attribute->hasKey($value);
 	}
 }

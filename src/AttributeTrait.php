@@ -4,21 +4,27 @@ namespace Jhesyong\Attribute;
 
 trait AttributeTrait
 {
-	protected $attributeData = null;
+	protected $attributeContext = null;
 
 	/**
 	 * Return a value => label array
+	 *
 	 * @return array
 	 */
-	abstract protected function getOptions();
+	abstract protected function getOptions($context = null);
+
+	public function setContext($context)
+	{
+		$this->attributeContext = $context;
+	}
 
 	protected function getData()
 	{
-		if ($this->attributeData === null) {
-			$this->attributeData = $this->getOptions();
-		}
+		$data = $this->getOptions($this->attributeContext);
 
-		return $this->attributeData;
+		$this->attributeContext = null;
+
+		return $data;
 	}
 
 	public function hasKey($key)
