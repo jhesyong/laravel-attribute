@@ -111,3 +111,36 @@ Use `attr` as the rule name.
 
     'animal_type' => 'required|attr:mammal_animal',
 
+## Context
+Sometimes you may want to get different options according to the certain condition.
+For example, you want to get options from database and filter options by some column value.
+
+You can change `getOptions()` to `getOptions($context = null)` and return different options according to the `$context`.
+For example,
+
+    class Fruit
+    {
+        use AttributeTrait;
+
+        protected function getOptions($context = null)
+        {
+            $category = [
+                'sour' => ['lemon' => 'Lemon', 'grape' => 'Grape', 'kiwi' => 'Kiwi'],
+                'sweet' => ['banana' => 'Banana', 'apple' => 'Apple'],
+            ];
+
+            if (array_key_exists($context, $category)) {
+                return $category[$context];
+            }
+
+            return array_reduce($category, 'array_merge', []);
+        }
+    }
+
+To get the options, pass the context first. The context only effects the next method call.
+
+    Attr::context('sour')->hashArray('food');
+    
+To validate data, add the context after the attribute name.
+
+    'sweet_fruit' => 'required|attr:fruit,sweet',
