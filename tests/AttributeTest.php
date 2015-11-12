@@ -96,6 +96,12 @@ namespace {
             $this->assertTrue($validator->validate('any_name', 'dog', ['mammal_animal']));
             $this->assertTrue($validator->validate('any_name', 'elephant', ['mammal_animal']));
             $this->assertFalse($validator->validate('any_name', 'snake', ['mammal_animal']));
+
+            $this->assertTrue($validator->validate('any_name', ['cat', 'dog'], ['mammal_animal']));
+            $this->assertTrue($validator->validate('any_name', ['cat', 'dog', 'elephant'], ['mammal_animal']));
+            $this->assertFalse($validator->validate('any_name', ['snake', 'cat', 'dog'], ['mammal_animal']));
+            $this->assertFalse($validator->validate('any_name', ['dog', 'snake'], ['mammal_animal']));
+            $this->assertFalse($validator->validate('any_name', ['pikachu', 'snake'], ['mammal_animal']));
         }
 
         public function testContext()

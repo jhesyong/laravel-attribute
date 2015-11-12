@@ -19,6 +19,12 @@ class Validator
 			$attribute->setContext($parameters[1]);
 		}
 
-		return $attribute->hasKey($value);
+		foreach ((array) $value as $item) {
+			if ( ! $attribute->hasKey($item)) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }
