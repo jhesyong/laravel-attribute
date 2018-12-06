@@ -15,11 +15,12 @@ class Validator
 	{
 		$attribute = $this->registrar->getAttribute($parameters[0]);
 
-		if (array_key_exists(1, $parameters)) {
-			$attribute->setContext($parameters[1]);
-		}
-
 		foreach ((array) $value as $item) {
+
+			if (array_key_exists(1, $parameters)) {
+				$attribute->setContext($parameters[1]);
+			}
+
 			if ( ! $attribute->hasKey($item)) {
 				return false;
 			}
